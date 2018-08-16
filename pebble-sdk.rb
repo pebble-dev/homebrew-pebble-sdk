@@ -14,6 +14,12 @@ class PebbleSdk < Formula
     sha256 '18dba8dacb34ec881b34dedca69d0987522f76e12e5a34cf2cabbef26862fcf8'
   end
 
+  bottle do
+    root_url "https://rebble-homebrew.s3.amazonaws.com"
+    cellar :any
+    sha256 "b8b9a4e7ce1e202c6cbd0df8e0daf2e2f82dd495fe5df5dd93fe27d1827fd1f1" => :high_sierra
+  end
+
   head do
     url 'https://github.com/pebble-dev/pebble-tool.git'
   end
