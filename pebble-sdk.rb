@@ -7,22 +7,15 @@ class PebbleSdk < Formula
     end
   end
 
-  homepage 'https://developer.pebble.com'
+  homepage 'https://developer.rebble.io'
   stable do
-    version PebbleSdk::Version.new("4.5")
-    url 'https://github.com/pebble/pebble-tool/archive/v4.5.zip'
-    sha256 '96f95fac6fe11ddb7fdaa359ffd04a508249b8782086a161cf30c3836753b401'
-  end
-
-  bottle do
-    root_url "http://pebble-sdk-homebrew.s3.amazonaws.com"
-    cellar :any
-    sha256 "bcbebcf5c8f6631374044d86d3c6b007a9e6440c83c2fbb3741693e17818aa62" => :el_capitan
-    sha256 "f14ce854035de57dbcc9f8ab390071491aee81a37456cf325b28ac5a80020989" => :sierra
+    version PebbleSdk::Version.new("4.6-rc1")
+    url 'https://github.com/pebble-dev/pebble-tool/archive/v4.6-rc1.zip'
+    sha256 '18dba8dacb34ec881b34dedca69d0987522f76e12e5a34cf2cabbef26862fcf8'
   end
 
   head do
-    url 'https://github.com/pebble/pebble-tool.git'
+    url 'https://github.com/pebble-dev/pebble-tool.git'
   end
 
   depends_on 'node'
@@ -164,6 +157,11 @@ class PebbleSdk < Formula
     sha256 'e24052411fc4fbd1f672635537c3fc2330d9481b18c0317695b46259512c91d5'
   end
 
+  resource 'sourcemap' do
+    url 'https://files.pythonhosted.org/packages/f1/2d/a9f339c093a5e826a12a41ad0ae945ee7da0b0506fafc33be7fb7d3b6a05/sourcemap-0.2.0.tar.gz'
+    sha256 'd18dc73b1f79070347d6ce0a671f46aff96d191f74b0c85aa415780800464ea4'
+  end
+
   resource 'websocket-client' do
     url 'https://pypi.python.org/packages/source/w/websocket-client/websocket_client-0.32.0.tar.gz'
     sha256 'cb3ab95617ed2098d24723e3ad04ed06c4fde661400b96daa1859af965bfe040'
@@ -193,7 +191,7 @@ class PebbleSdk < Formula
     ENV.prepend_create_path "PYTHONPATH", libexec/"lib/python2.7/site-packages"
     ENV.prepend_create_path "PYTHONPATH", libexec/"vendor/lib/python2.7/site-packages"
 
-    %w[pypkjs backports.ssl-match-hostname colorama enum34 freetype-py gevent gevent-websocket greenlet httplib2 libpebble2 pyasn1 pyasn1-modules oauth2client packaging peewee progressbar2 pygeoip pyparsing pypng pyqrcode pyserial python-dateutil requests rsa sh six websocket-client wheel wsgiref netaddr virtualenv].each do |r|
+    %w[pypkjs backports.ssl-match-hostname colorama enum34 freetype-py gevent gevent-websocket greenlet httplib2 libpebble2 pyasn1 pyasn1-modules oauth2client packaging peewee progressbar2 pygeoip pyparsing pypng pyqrcode pyserial python-dateutil requests rsa sh six sourcemap websocket-client wheel wsgiref netaddr virtualenv].each do |r|
       resource(r).stage { system "python", *Language::Python.setup_install_args(libexec/"vendor") }
     end
 
@@ -219,7 +217,7 @@ class PebbleSdk < Formula
     end
   end
 
-  def caveats; <<-EOS.undent
+  def caveats; <<~EOS
       
       Documentation can be found online at https://developer.pebble.com/docs
 

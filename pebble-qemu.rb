@@ -2,7 +2,7 @@ class PebbleQemu < Formula
   homepage "https://github.com/pebble/qemu"
 
   bottle do
-    root_url "http://pebble-sdk-homebrew.s3.amazonaws.com"
+    root_url "https://pebble-sdk-homebrew.s3.amazonaws.com"
     cellar :any
     sha256 "19b65c6791d46ebefbf2bf4cc8a38b77bd060a45a2ca5de853b6a774f9d383b7" => :el_capitan
     sha256 "91cc0a6234f9d9d0e6843e072756c78854cb2fae71330d054288c06f5bae4017" => :sierra
